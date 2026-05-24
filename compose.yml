@@ -2,15 +2,18 @@
 version: "3"
 services:
  devopsdb:
-   container_name: devopsdb
-   image: dbimage
+   image: allakondaswapna/automation:db
    ports:
      - "3306:3306"
+   deploy:
+     replicas: 3
+    
 
  application:
-   container_name: appcontainer
-   image: appimage
+   image: allakondaswapna/automation:app
    ports:
-     - "1234:8080"
+     - "1111:8080"
+   deploy:
+     replicas: 3
    depends_on:
      - "devopsdb"
