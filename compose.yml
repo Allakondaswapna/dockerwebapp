@@ -9,7 +9,7 @@ services:
     networks:
       - mynetwork
     volumes:
-      - Docker-db/etc/bin
+      - Docker-db:/etc/bin
     environment:
       username: admin
       password: admin@123
@@ -19,8 +19,8 @@ services:
          limits:
            cpus: "0.5"
            memory: 128M
-         reservation: 
-            limits: "0.25"
+         reservations: 
+            cpus: "0.25"
             memory: 64M
       
 
@@ -31,7 +31,7 @@ services:
     networks:
       - mynetwork
     volumes:
-      - Docker-app/etc/bin
+      - Docker-app:/etc/bin
     environment:
       username: admin
       password: admin@345
@@ -41,8 +41,8 @@ services:
          limits:
            cpus: "0.5"
            memory: 128M
-         reservation: 
-            limits: "0.25"
+         reservations: 
+            cpus: "0.25"
             memory: 64M
     depends_on:
       - devopsdb
