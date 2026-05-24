@@ -1,58 +1,82 @@
----
 version: "3.9"
 
 services:
+
   devopsdb:
+
     image: allakondaswapna/project:db
+
     ports:
       - "3306:3306"
+
     networks:
       - mynetwork
+
     volumes:
       - Docker-db:/var/lib/mysql
+
     environment:
       username: admin
       password: admin@123
+
     deploy:
+
       replicas: 1
+
       restart_policy:
         condition: any
+
       resources:
-         limits:
-           cpus: "0.5"
-           memory: 128M
-         reservations: 
-            cpus: "0.25"
-            memory: 64M
-      
+
+        limits:
+          cpus: "0.5"
+          memory: 128M
+
+        reservations:
+          cpus: "0.25"
+          memory: 64M
 
   application:
+
     image: allakondaswapna/project:app
+
     ports:
       - "2222:8080"
+
     networks:
       - mynetwork
+
     volumes:
       - Docker-app:/usr/local/tomcat/webapps
+
     environment:
       username: admin
       password: admin@345
+
     deploy:
+
       replicas: 3
+
       resources:
-         limits:
-           cpus: "0.5"
-           memory: 128M
-         reservations: 
-            cpus: "0.25"
-            memory: 64M
+
+        limits:
+          cpus: "0.5"
+          memory: 128M
+
+        reservations:
+          cpus: "0.25"
+          memory: 64M
+
     depends_on:
       - devopsdb
-      
+
 networks:
+
   mynetwork:
     driver: overlay
 
 volumes:
+
   Docker-db:
+
   Docker-app:
