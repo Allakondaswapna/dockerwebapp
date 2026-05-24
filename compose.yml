@@ -9,7 +9,7 @@ services:
     networks:
       - mynetwork
     volumes:
-      - Docker-db
+      - Docker-db:/var/lib/mysql
     environment:
       username: admin
       password: admin@123
@@ -33,7 +33,7 @@ services:
     networks:
       - mynetwork
     volumes:
-      - Docker-app
+      - Docker-app:/usr/local/tomcat/webapps
     environment:
       username: admin
       password: admin@345
