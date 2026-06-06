@@ -3,7 +3,7 @@ version: "3.9"
 services:
 
   devopsdb:
-    image: allakondaswapna/project:db
+    image: allakondaswapna/automation:db
     ports:
       - "3306:3306"
     networks:
@@ -11,7 +11,7 @@ services:
     
 
   application:
-    image: allakondaswapna/project:app
+    image: allakondaswapna/automation:app
     ports:
       - "2222:8080"
     networks:
