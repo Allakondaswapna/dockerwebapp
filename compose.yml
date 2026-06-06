@@ -10,8 +10,10 @@ services:
     volumes:
       - Docker-db:/var/lib/mysql
     environment:
-      username: admin
-      password: admin@123
+      MYSQL_DATABASE: mydb
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin@123
+      MYSQL_ROOT_PASSWORD: root123
     deploy:
       replicas: 1
       restart_policy:
@@ -19,10 +21,10 @@ services:
       resources:
          limits:
            cpus: "0.5"
-           memory: 128M
+           memory: 512M
          reservations: 
             cpus: "0.25"
-            memory: 64M
+            memory: 256M
       
 
   application:
@@ -41,10 +43,10 @@ services:
       resources:
          limits:
            cpus: "0.5"
-           memory: 128M
+           memory: 512M
          reservations: 
             cpus: "0.25"
-            memory: 64M
+            memory: 256M
     depends_on:
       - devopsdb
       
