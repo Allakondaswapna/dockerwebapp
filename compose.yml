@@ -10,10 +10,10 @@ services:
     volumes:
       - Docker-db:/var/lib/mysql
     environment:
-      MYSQL_DATABASE: mydb
+      MYSQL_ROOT_PASSWORD: devopspassword
+      MYSQL_DATABASE: accounts
       MYSQL_USER: admin
       MYSQL_PASSWORD: admin@123
-      MYSQL_ROOT_PASSWORD: root123
     deploy:
       replicas: 1
       restart_policy:
