@@ -9,6 +9,15 @@ services:
       - mynetwork
     volumes:
       - Docker-db:/var/lib/mysql
+    deploy:
+      replicas: 2
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 516M
+        reservations:
+          cpus: "0.25"
+          memory: 256M
 
   application:
     image: allakondaswapna/newrepo:application
@@ -18,6 +27,15 @@ services:
       - mynetwork
     volumes:
       - Docker-app:/usr/local/tomcat/webapps
+    deploy:
+      replicas: 2
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 516M
+        reservations:
+          cpus: "0.25"
+          memory: 256M
     depends_on:
       - devopsdb
 
