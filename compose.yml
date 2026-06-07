@@ -8,7 +8,7 @@ services:
     networks:
       - mynetwork
     volumes:
-      - Docker-db:/var/lib/mysql
+      - Docker-db: /var/lib/mysql
       
 
   application:
@@ -18,7 +18,7 @@ services:
     networks:
       - mynetwork
     volumes:
-      - Docker-app:/usr/local/tomcat/webapps
+      - Docker-app: /usr/local/tomcat/webapps
     depends_on:
       - devopsdb
       
