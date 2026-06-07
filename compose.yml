@@ -9,6 +9,11 @@ services:
       - mynetwork
     volumes:
       - Docker-db:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: devopspassword
+      MYSQL_DATABASE: accounts
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin@123
     deploy:
       replicas: 1
       resources:
@@ -27,6 +32,12 @@ services:
       - mynetwork
     volumes:
       - Docker-app:/usr/local/tomcat/webapps
+    environment:
+      DB_HOST: devopsdb
+      DB_PORT: 3306
+      DB_NAME: accounts
+      DB_USER: admin
+      DB_PASSWORD: admin@123
     deploy:
       replicas: 2
       resources:
