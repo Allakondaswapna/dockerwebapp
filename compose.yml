@@ -2,26 +2,25 @@ version: "3.9"
 
 services:
   devopsdb:
-    image: allakondaswapna/newrepo:database
+    image: allakondaswapna/automation:db
     ports:
       - "3306:3306"
     networks:
       - mynetwork
     volumes:
-      - Docker-db: /var/lib/mysql
-      
+      - Docker-db:/var/lib/mysql
 
   application:
-    image: allakondaswapna/newrepo:application
+    image: allakondaswapna/automation:app
     ports:
       - "2222:8080"
     networks:
       - mynetwork
     volumes:
-      - Docker-app: /usr/local/tomcat/webapps
+      - Docker-app:/usr/local/tomcat/webapps
     depends_on:
       - devopsdb
-      
+
 networks:
   mynetwork:
     driver: overlay
