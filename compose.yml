@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
   devopsdb:
-    image: allakondaswapna/automation:db
+    image: allakondaswapna/newrepo:database
     ports:
       - "3306:3306"
     networks:
@@ -11,7 +11,7 @@ services:
       - Docker-db:/var/lib/mysql
 
   application:
-    image: allakondaswapna/automation:app
+    image: allakondaswapna/newrepo:application
     ports:
       - "2222:8080"
     networks:
